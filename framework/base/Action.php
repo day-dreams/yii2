@@ -91,7 +91,7 @@ class Action extends Component
             Yii::$app->requestedParams = $args;
         }
         if ($this->beforeRun()) {
-            $result = call_user_func_array([$this, 'run'], $args);
+            $result = call_user_func_array([$this, 'run'], $args);/*运行具体的action函数*/
             $this->afterRun();
 
             return $result;

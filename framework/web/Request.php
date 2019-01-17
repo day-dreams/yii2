@@ -269,9 +269,9 @@ class Request extends \yii\base\Request
      */
     public function resolve()
     {
-        $result = Yii::$app->getUrlManager()->parseRequest($this);
+        $result = Yii::$app->getUrlManager()->parseRequest($this);/*解析路由*/
         if ($result !== false) {
-            list($route, $params) = $result;
+            list($route, $params) = $result;/*这个route是简单的字符串而已；如果url不合法，无法完成url解析，route为空*/
             if ($this->_queryParams === null) {
                 $_GET = $params + $_GET; // preserve numeric keys
             } else {
@@ -941,7 +941,7 @@ class Request extends \yii\base\Request
             $pathInfo = substr($pathInfo, 1);
         }
 
-        return (string) $pathInfo;
+        return (string)$pathInfo;
     }
 
     /**
@@ -1058,7 +1058,7 @@ class Request extends \yii\base\Request
      */
     public function getServerPort()
     {
-        return isset($_SERVER['SERVER_PORT']) ? (int) $_SERVER['SERVER_PORT'] : null;
+        return isset($_SERVER['SERVER_PORT']) ? (int)$_SERVER['SERVER_PORT'] : null;
     }
 
     /**
@@ -1239,7 +1239,7 @@ class Request extends \yii\base\Request
     public function setPort($value)
     {
         if ($value != $this->_port) {
-            $this->_port = (int) $value;
+            $this->_port = (int)$value;
             $this->_hostInfo = null;
         }
     }
@@ -1272,7 +1272,7 @@ class Request extends \yii\base\Request
     public function setSecurePort($value)
     {
         if ($value != $this->_securePort) {
-            $this->_securePort = (int) $value;
+            $this->_securePort = (int)$value;
             $this->_hostInfo = null;
         }
     }
@@ -1415,7 +1415,7 @@ class Request extends \yii\base\Request
                 if (strpos($param, '=') !== false) {
                     list($key, $value) = explode('=', $param, 2);
                     if ($key === 'q') {
-                        $values['q'][2] = (float) $value;
+                        $values['q'][2] = (float)$value;
                     } else {
                         $values[$key] = $value;
                     }

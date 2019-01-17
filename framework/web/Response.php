@@ -336,8 +336,8 @@ class Response extends \yii\base\Response
         $this->trigger(self::EVENT_BEFORE_SEND);
         $this->prepare();
         $this->trigger(self::EVENT_AFTER_PREPARE);
-        $this->sendHeaders();
-        $this->sendContent();
+        $this->sendHeaders();/*写头部*/
+        $this->sendContent();/*写body*/
         $this->trigger(self::EVENT_AFTER_SEND);
         $this->isSent = true;
     }

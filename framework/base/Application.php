@@ -199,10 +199,12 @@ abstract class Application extends Module
 
         $this->state = self::STATE_BEGIN;
 
+        //设置项目id、vendor路径、时区等字段
         $this->preInit($config);
 
         $this->registerErrorHandler($config);
 
+        //设置各种属性字段
         Component::__construct($config);
     }
 
@@ -375,6 +377,11 @@ abstract class Application extends Module
      * Runs the application.
      * This is the main entrance of an application.
      * @return int the exit status (0 means normal, non-zero values mean abnormal)
+     */
+    /**
+     * 整个应用的入口函数
+     * @return int
+     * @throws ExitException
      */
     public function run()
     {

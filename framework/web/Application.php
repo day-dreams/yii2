@@ -75,6 +75,9 @@ class Application extends \yii\base\Application
      * @return Response the resulting response
      * @throws NotFoundHttpException if the requested route is invalid
      */
+    /**
+     * request处理逻辑
+     */
     public function handleRequest($request)
     {
         if (empty($this->catchAll)) {
@@ -93,6 +96,7 @@ class Application extends \yii\base\Application
                 return $this->getResponse()->redirect(Url::to($url, $e->scheme), $e->statusCode);
             }
         } else {
+            //如果有catchall，使用配置好的route
             $route = $this->catchAll[0];
             $params = $this->catchAll;
             unset($params[0]);
@@ -100,7 +104,7 @@ class Application extends \yii\base\Application
         try {
             Yii::debug("Route requested: '$route'", __METHOD__);
             $this->requestedRoute = $route;
-            $result = $this->runAction($route, $params);
+            $result = $this->runAction($route, $params);/*运行具体action*/
             if ($result instanceof Response) {
                 return $result;
             }
